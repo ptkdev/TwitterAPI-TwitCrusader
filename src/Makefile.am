@@ -6,8 +6,11 @@ functions.c \
 user.c \
 http.c \
 oauth.c \
+status.c \
 timeline.c \
-twitter.c
+twitter.c \
+dm.c \
+favorites.c
 
 libtwitc_a_LIBADD =
 
