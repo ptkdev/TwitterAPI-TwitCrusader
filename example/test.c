@@ -100,12 +100,36 @@ onTimelineReading(timeline_t * timeline)
   int i = 0;
   for (i = 0; i < MAX_NUM_TWEETS; i++)
     {
-      printf("%i)", i + 1);
-      onStatusReading(&timeline->statuses[i]);
-
+      if(timeline->statuses[i].text)
+        {
+          printf("%i)", i + 1);
+          onStatusReading(&timeline->statuses[i]);
+        }
     }
 
 }
+
+void
+onDMReading(direct_message_t * direct_message)
+{
+  if (direct_message->created_at && direct_message->sender.screen_name && direct_message->recipient.screen_name && direct_message->text)
+    fprintf(stdout, "\tDate: %s\nFrom: @%s\nTo: @%s\nMessage: %s\n\n", direct_message->created_at,
+        direct_message->sender.screen_name, direct_message->recipient.screen_name, direct_message->text);
+}
+
+void onDMsReading(direct_messages_t *DMs)
+{
+  int i = 0;
+  for (i = 0; i < MAX_NUM_DM; i++)
+    {
+      if(DMs->directMessage[i].text)
+        {
+          printf("%i)", i + 1);
+          onDMReading(&DMs->directMessage[i]);
+        }
+    }
+}
+
 
 byte_t
 main(int argc, char *argv[])
@@ -158,11 +182,34 @@ main(int argc, char *argv[])
           getRawTimeline(twURLS, home_timeline, user));
       onTimelineReading(&timeline);
 
-      int i = 0;
-       for (i = 0; i < MAX_NUM_TWEETS; i++)
-         {
-           uninitStatus(timeline.statuses[i]);
-      }
+      uninitTimeline(&timeline);
+
+      string_t rawDM=getRawDM(twURLS, user);
+      direct_messages_t DMs=readDMs(rawDM);
+
+      onDMsReading(&DMs);
+
+      uninitDirectMessages(&DMs);
+
+
+      string_t rawSentDM=getRawSentDM(twURLS, user);
+      direct_messages_t sentDMs=readDMs(rawSentDM);
+
+      onDMsReading(&sentDMs);
+
+      uninitDirectMessages(&sentDMs);
+
+      string_t dm=sendDM(twURLS, user, user->screenName,"E' solo un test!");
+
+      info("DM: %s", dm);
+
+      timeline_t favorites = readTimeLine(
+          getRawFavorites(twURLS, user));
+
+      onTimelineReading(&favorites);
+
+      uninitTimeline(&favorites);
+
 
       if (user)
         uninitUser(user);
