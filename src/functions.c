@@ -17,7 +17,8 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <twitc/debug.h>
+#include <logc/logc.h>
+
 #include <twitc/stdredef.h>
 #include <twitc/functions.h>
 
@@ -69,17 +70,8 @@ readRawTextFile(const string_t fileName)
 
     }
 
-  warning("Returned value: (NULL)");
+  log(WARNING,"Returned value: (NULL)");
   return NULL ;
-}
-
-void
-removeFile(const string_t fileName)
-{
-  if (remove(fileName))
-    error("Can't delete: %s", fileName);
-  else
-    info("%s successfully deleted.", fileName);
 }
 
 byte_t
@@ -106,31 +98,6 @@ initFileLock(const string_t fileName)
     }
 
   return EXIT_FAILURE;
-}
-
-long
-checkFileSize(const string_t fileName)
-{
-
-  if (fileName)
-    {
-
-      FILE *fp = fopen(fileName, "r");
-
-      if (fp)
-        {
-          fseek(fp, 0L, SEEK_END);
-          long sz = ftell(fp);
-          rewind(fp);
-
-          fclose(fp);
-
-          return sz;
-        }
-
-    }
-
-  return -1;
 }
 
 #ifdef __cplusplus

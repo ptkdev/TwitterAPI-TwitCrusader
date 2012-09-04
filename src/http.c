@@ -17,8 +17,9 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <logc/logc.h>
+
 #include <twitc/stdredef.h>
-#include <twitc/debug.h>
 #include <twitc/http.h>
 
 #include <stdio.h>
@@ -68,7 +69,7 @@ getFileCURL(string_t url, string_t file)
 #ifdef DEBUG
           curl_easy_setopt (curl, CURLOPT_VERBOSE, true);
 #else
-          info("Verbose output disabled into the download process");
+          log(INFO,"Verbose output disabled into the download process");
           curl_easy_setopt(curl, CURLOPT_VERBOSE, false);
 #endif
           // Open the file to write the copied file to
@@ -105,7 +106,7 @@ init_data_buffer(dataBuffer_t * s)
   s->ptr = malloc(s->len + 1);
   if (s->ptr == NULL )
     {
-      error("malloc() failed");
+      log(ERROR,"malloc() failed");
       exit(EXIT_FAILURE);
     }
   s->ptr[0] = '\0';
@@ -144,7 +145,7 @@ getPageCURL(string_t url)
 #ifdef DEBUG
       curl_easy_setopt (curl, CURLOPT_VERBOSE, true);
 #else
-      info("Verbose output disabled into the download process");
+      log(INFO,"Verbose output disabled into the download process");
       curl_easy_setopt(curl, CURLOPT_VERBOSE, false);
 #endif
       curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, writefunc);
@@ -157,7 +158,7 @@ getPageCURL(string_t url)
       return s.ptr;
     }
 
-  warning("Returned value: (NULL)");
+  log(WARNING,"Returned value: (NULL)");
   return NULL ;
 }
 
