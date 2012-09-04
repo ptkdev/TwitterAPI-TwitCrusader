@@ -19,8 +19,9 @@
  * Fifth Floor, Boston, MA  02110-1301  USA
  */
 
+#include <logc/logc.h>
+
 #include <twitc/stdredef.h>
-#include <twitc/debug.h>
 #include <twitc/http.h>
 #include <twitc/oauth.h>
 
@@ -58,7 +59,7 @@ getParameters(string_t argv[], int argc, const string_t param)	// Improved
         }
     }
 
-  warning("Returned value: (NULL)");
+  log(WARNING,"Returned value: (NULL)");
   return NULL ;
 }
 
@@ -72,7 +73,7 @@ tokenRequest(const twitterURLS_t * twURLS, const string_t c_key,
   if (twURLS && c_key && c_secret)
     {
 
-      string_t req_url = componeOAUTH_URL(twURLS, Https, REQTOKEN_URL, None);
+      string_t req_url = componeOAUTH_URL(twURLS, Http, REQTOKEN_URL, None);
 
       string_t postarg = NULL;
       req_url = oauth_sign_url2(req_url, NULL, OA_HMAC, NULL, c_key, c_secret,
@@ -102,7 +103,7 @@ tokenRequest(const twitterURLS_t * twURLS, const string_t c_key,
     }
 
   if (!tempKeyParameters)
-    warning("Returned value: (NULL)");
+    log(WARNING,"Returned value: (NULL)");
 
   return tempKeyParameters;
 
@@ -163,7 +164,7 @@ tokenTemp(const twitterURLS_t * twURLS, const string_t twitterKey,
     }
 
   if (!tmpToken)
-    warning("Returned value: (NULL)");
+    log(WARNING,"Returned value: (NULL)");
 
   return tmpToken;
 }
@@ -212,7 +213,7 @@ tokenTempBrowser(const twitterURLS_t * twURLS, const string_t twitterKey,
               /* 
                * Generate a Twitter-URL for get user-PIN 
                */
-              string_t req_url = componeOAUTH_URL(twURLS, Https, AUTHORIZE_URL,
+              string_t req_url = componeOAUTH_URL(twURLS, Http, AUTHORIZE_URL,
                   None);
 
               string_t url = NULL;
@@ -243,7 +244,7 @@ tokenTempBrowser(const twitterURLS_t * twURLS, const string_t twitterKey,
     }
 
   if (!tmpToken)
-    warning("Returned value: (NULL)");
+    log(WARNING,"Returned value: (NULL)");
 
   return tmpToken;
 }
@@ -283,7 +284,7 @@ tokenAccess(const twitterURLS_t * twURLS, const string_t pin,
            * necessary: TwitCrusader consumer key (and secret) with a 2
            * Temp-Keys All keys are saved in /tmp/token file 
            */
-          string_t accessURL = componeOAUTH_URL(twURLS, Https, ACCESS_TOKEN_URL,
+          string_t accessURL = componeOAUTH_URL(twURLS, Http, ACCESS_TOKEN_URL,
               None);
           asprintf(&accessURL, "%s%s%s%s%s", accessURL, URL_SEP_QUES,
               "oauth_verifier", "=", pin);
@@ -346,7 +347,7 @@ tokenAccess(const twitterURLS_t * twURLS, const string_t pin,
     }
 
   if (!user)
-    warning("Returned value: (NULL)");
+    log(WARNING,"Returned value: (NULL)");
 
   return user;
 }

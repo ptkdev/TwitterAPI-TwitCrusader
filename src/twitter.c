@@ -18,7 +18,8 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <twitc/debug.h>
+#include <logc/logc.h>
+
 #include <twitc/twitter.h>
 #include <twitc/user.h>
 #include <twitc/http.h>
@@ -83,7 +84,7 @@ uninitURLS(twitterURLS_t * twURLS)
       free(twURLS);
     }
 
-  warning("twitterURLS_t uninitialized");
+  log(WARNING,"twitterURLS_t uninitialized");
   twURLS = NULL;
 
 }

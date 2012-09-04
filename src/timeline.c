@@ -18,7 +18,8 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <twitc/debug.h>
+#include <logc/logc.h>
+
 #include <twitc/http.h>
 #include <twitc/timeline.h>
 #include <twitc/user.h>
@@ -108,7 +109,7 @@ extern "C"
     url = NULL;
 
     if (!timeline)
-      warning("Returned value: (NULL)");
+      log(WARNING,"Returned value: (NULL)");
 
     return timeline;
   }

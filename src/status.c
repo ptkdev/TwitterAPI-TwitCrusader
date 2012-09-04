@@ -20,7 +20,8 @@
  */
 
 
-#include <twitc/debug.h>
+#include <logc/logc.h>
+
 #include <twitc/http.h>
 #include <twitc/status.h>
 #include <twitc/user.h>
@@ -454,7 +455,7 @@ extern "C"
 
       }
     if (!output)
-      warning("Returned value: (NULL)");
+      log(WARNING,"Returned value: (NULL)");
     else
       debug ("output: %s", output);
 
