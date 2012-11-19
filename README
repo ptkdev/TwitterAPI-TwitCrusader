@@ -1,13 +1,12 @@
 libtwitc - C Support Library for Twitter
 Copyright (C) 2012  Orazio Briante orazio.briante@hotmail.it
 
-Other developers: Patryk Rzucidlo ptkdev@gmail.com
+Other developers: Patryk Rzucidlo ptkdev@gmail.com, Michele Adduci info@micheleadduci.net
 
 * Prerequisites:
 
 	- gcc, g++, or cc
-	- pkg-config
-	- autotools
+	- cmake
 
 	- libcurl
 	- libxml-2.0
@@ -15,33 +14,11 @@ Other developers: Patryk Rzucidlo ptkdev@gmail.com
 
 * How to Generate Makefile:
 
-	$ ./autogen.sh
-  or
-    $ sh autogen.sh
-
+	$ cmake .
 
 * Compile - Makefile:
     
- 	$ ./configure
-    $ make 	
-
-and if necessary:
-    $ su
-    # make install
-
- 
- * To enable Debug option on Compiling process:
- 	
- 	$ ./configure --enable-debug
- 	
-    
-* Unistalling - Makefile (if necessary)
-    $ su
-    # make uninstall
-
-* To clean directory
- 
- run "make clean" from the test source tree.
+     $ make 	
 
 * Test Files:
 
