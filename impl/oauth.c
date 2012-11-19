@@ -19,11 +19,11 @@
  * Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#include <logc/logc.h>
+#include "liblogc/logc.h"
 
-#include <twitc/stdredef.h>
-#include <twitc/http.h>
-#include <twitc/oauth.h>
+#include "libtwitc/stdredef.h"
+#include "libtwitc/http.h"
+#include "libtwitc/oauth.h"
 
 #include <stdio.h>
 #include <stdlib.h>

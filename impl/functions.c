@@ -17,10 +17,10 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <logc/logc.h>
+#include "liblogc/logc.h"
 
-#include <twitc/stdredef.h>
-#include <twitc/functions.h>
+#include "libtwitc/stdredef.h"
+#include "libtwitc/functions.h"
 
 #include <stdio.h>
 #include <stdlib.h>

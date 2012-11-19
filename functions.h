@@ -17,31 +17,17 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef USER_H_
-#define USER_H_
+#ifndef FUNCTION_H_
+#define FUNCTION_H_
 
-#include <twitc/stdredef.h>
+#include "libtwitc/stdredef.h"
 
-#define		MY_ENCODING		"ISO-8859-1"
+extern byte_t
+createDirectory(const string_t);
+extern string_t
+readRawTextFile(const string_t);
 
-typedef struct
-{
-  string_t id;
-  string_t screenName;
-  string_t token;
-  string_t secretToken;
-  string_t consumerKey;
-  string_t consumerSecretKey;
-} user_t;
+extern byte_t
+initFileLock(const string_t);
 
-extern user_t *
-initUser(const string_t, const string_t, const string_t, const string_t,
-    const string_t, const string_t);
-extern void
-writeUserFile(const user_t *, const string_t);
-extern user_t *
-readUserFile(const string_t);
-extern void
-uninitUser(user_t *);
-
-#endif /* USER_H_ */
+#endif /* FUNCTION_H_ */

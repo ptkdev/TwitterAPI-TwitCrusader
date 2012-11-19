@@ -26,7 +26,7 @@
 
 
 
-#include <twitc/stdredef.h>
+#include "libtwitc/stdredef.h"
 
 typedef struct{
   string_t id;

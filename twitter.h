@@ -21,8 +21,8 @@
 #ifndef TWITTER_H_
 #define TWITTER_H_
 
-#include <twitc/stdredef.h>
-#include <twitc/user.h>
+#include "libtwitc/stdredef.h"
+#include "libtwitc/user.h"
 
 #define  MAX_TIMELINE_TWEET_COUNT	200
 

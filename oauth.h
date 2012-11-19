@@ -19,13 +19,24 @@
  * Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-#ifndef FAVORITES_H_
-#define FAVORITES_H_
+#ifndef OAUTH_H_
+#define OAUTH_H_
 
-#include <twitc/stdredef.h>
-#include <twitc/twitter.h>
-#include <twitc/user.h>
+#include "libtwitc/stdredef.h"
+#include "libtwitc/twitter.h"
+#include "libtwitc/user.h"
 
-string_t getRawFavorites(const twitterURLS_t *, const user_t *);
+extern string_t
+tokenRequest(const twitterURLS_t *, const string_t c_key, const string_t);
 
-#endif /* FAVORITES_H_ */
+extern string_t
+tokenTemp(const twitterURLS_t *, const string_t, const string_t);
+
+extern string_t
+tokenTempBrowser(const twitterURLS_t *, const string_t, const string_t);
+
+extern user_t
+*
+tokenAccess(const twitterURLS_t *, const string_t, const string_t);
+
+#endif /* OAUTH_H_ */

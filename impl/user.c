@@ -17,9 +17,9 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <logc/logc.h>
-#include <twitc/stdredef.h>
-#include <twitc/user.h>
+#include "liblogc/logc.h"
+#include "libtwitc/stdredef.h"
+#include "libtwitc/user.h"
 
 #include <stdio.h>
 #include <stdlib.h>

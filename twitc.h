@@ -56,15 +56,15 @@
 #ifndef TWCORE_H_
 #define TWCORE_H_
 
-#include <twitc/stdredef.h>
-#include <twitc/functions.h>
-#include <twitc/http.h>
-#include <twitc/twitter.h>
-#include <twitc/oauth.h>
-#include <twitc/status.h>
-#include <twitc/timeline.h>
-#include <twitc/dm.h>
-#include <twitc/favorites.h>
+#include "libtwitc/stdredef.h"
+#include "libtwitc/functions.h"
+#include "libtwitc/http.h"
+#include "libtwitc/twitter.h"
+#include "libtwitc/oauth.h"
+#include "libtwitc/status.h"
+#include "libtwitc/timeline.h"
+#include "libtwitc/dm.h"
+#include "libtwitc/favorites.h"
 
 
 #endif /* TWCORE_H_ */

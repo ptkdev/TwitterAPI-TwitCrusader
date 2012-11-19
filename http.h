@@ -20,10 +20,10 @@
 #ifndef HTTP_H_
 #define HTTP_H_
 
-#include <twitc/twitter.h>
+#include "libtwitc/twitter.h"
 
 /* URL separators */
-#define URL_SEP_AMP					"&"
+#define URL_SEP_AMP						"&"
 #define URL_SEP_QUES					"?"
 #define EXTENSIONFORMAT_XML				".xml"
 

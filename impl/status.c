@@ -20,11 +20,11 @@
  */
 
 
-#include <logc/logc.h>
+#include "liblogc/logc.h"
 
-#include <twitc/http.h>
-#include <twitc/status.h>
-#include <twitc/user.h>
+#include "libtwitc/http.h"
+#include "libtwitc/status.h"
+#include "libtwitc/user.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -18,11 +18,11 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <logc/logc.h>
+#include "liblogc/logc.h"
 
-#include <twitc/http.h>
-#include <twitc/timeline.h>
-#include <twitc/user.h>
+#include "libtwitc/http.h"
+#include "libtwitc/timeline.h"
+#include "libtwitc/user.h"
 
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,6 +1,7 @@
 /*
  * libtwitc - C Support Library for Twitter
  * Copyright (C) 2012 Orazio Briante orazio.briante@hotmail.it
+ *                    Patryk Rzucidlo ptkdev@gmail.com
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -17,17 +18,40 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef FUNCTION_H_
-#define FUNCTION_H_
+#ifndef TIMELINE_H_
+#define TIMELINE_H_
 
-#include <twitc/stdredef.h>
+#include "libtwitc/stdredef.h"
+#include "libtwitc/status.h"
+#include "libtwitc/twitter.h"
 
-extern byte_t
-createDirectory(const string_t);
+#define		MAX_NUM_TWEETS	20
+
+typedef enum
+{
+  home_timeline,
+  public_timeline,
+  featured,
+  friends_timeline,
+  mentions,
+  user_timeline
+} timelineType_t;
+
+typedef struct
+{
+  status_t statuses[MAX_NUM_TWEETS];
+  timelineType_t type;
+} timeline_t;
+
+
+
 extern string_t
-readRawTextFile(const string_t);
+getRawTimeline(const twitterURLS_t *, timelineType_t, const user_t *);
 
-extern byte_t
-initFileLock(const string_t);
+extern timeline_t
+readTimeLine(const string_t);
 
-#endif /* FUNCTION_H_ */
+extern void uninitTimeline(timeline_t *);
+
+
+#endif /* TIMELINE_H_ */

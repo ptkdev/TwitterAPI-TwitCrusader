@@ -1,7 +1,6 @@
 /*
  * libtwitc - C Support Library for Twitter
  * Copyright (C) 2012 Orazio Briante orazio.briante@hotmail.it
- *                    Patryk Rzucidlo ptkdev@gmail.com
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -18,40 +17,31 @@
  * with this program. If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TIMELINE_H_
-#define TIMELINE_H_
+#ifndef USER_H_
+#define USER_H_
 
-#include <twitc/stdredef.h>
-#include <twitc/status.h>
-#include <twitc/twitter.h>
+#include "libtwitc/stdredef.h"
 
-#define		MAX_NUM_TWEETS	20
-
-typedef enum
-{
-  home_timeline,
-  public_timeline,
-  featured,
-  friends_timeline,
-  mentions,
-  user_timeline
-} timelineType_t;
+#define		MY_ENCODING		"ISO-8859-1"
 
 typedef struct
 {
-  status_t statuses[MAX_NUM_TWEETS];
-  timelineType_t type;
-} timeline_t;
+  string_t id;
+  string_t screenName;
+  string_t token;
+  string_t secretToken;
+  string_t consumerKey;
+  string_t consumerSecretKey;
+} user_t;
 
+extern user_t *
+initUser(const string_t, const string_t, const string_t, const string_t,
+    const string_t, const string_t);
+extern void
+writeUserFile(const user_t *, const string_t);
+extern user_t *
+readUserFile(const string_t);
+extern void
+uninitUser(user_t *);
 
-
-extern string_t
-getRawTimeline(const twitterURLS_t *, timelineType_t, const user_t *);
-
-extern timeline_t
-readTimeLine(const string_t);
-
-extern void uninitTimeline(timeline_t *);
-
-
-#endif /* TIMELINE_H_ */
+#endif /* USER_H_ */
